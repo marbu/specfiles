@@ -6,7 +6,7 @@ Version:        0.5.8
 Release:        1%{?dist}
 Summary:        Configuration Manager for JSON, YAML and INI
 
-License:        
+License:        BSD
 URL:            https://github.com/emre/kaptan
 Source0:        https://pypi.python.org/packages/source/k/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
