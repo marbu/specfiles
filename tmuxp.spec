@@ -15,6 +15,11 @@ BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
  
 Requires:       python-setuptools
+Requires:       tmux>=1.8
+Requires:       python>=2.6
+Requires:       python-kaptan>=0.5.7
+Requires:       python-argcomplete
+
 
 %description
 tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
@@ -42,6 +47,7 @@ rm -rf %{pypi_name}.egg-info
 
 %files
 %doc README.rst LICENSE
+%{_bindir}/tmuxp
 %{_bindir}/tmuxp.bash
 %{_bindir}/tmuxp.zsh
 %{_bindir}/tmuxp.tcsh
