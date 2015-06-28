@@ -20,19 +20,6 @@ Requires:       python-setuptools
 tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
 `python objects`_, JSON or YAML.
 
-.. image::
-https://img.shields.io/pypi/v/tmuxp.svg
-    :target:
-http://badge.fury.io/py/tmuxp
-
-.. image::
-https://img.shields.io/travis/tony/tmuxp.svg
-   :target: https://travis-
-ci.org/tony/tmuxp
-
-.. image:: https://img.shields.io/coveralls/tony/tmuxp.svg
-:target: ...
-
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
