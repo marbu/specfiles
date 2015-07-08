@@ -2,13 +2,13 @@
 %global pypi_name tmuxp
 
 Name:           %{pypi_name}
-Version:        0.8.1
+Version:        0.9.0
 Release:        1%{?dist}
 Summary:        Save and load tmux sessions thru JSON, YAML configs. Control tmux through Python objects
 
 License:        BSD
-URL:            http://github.com/tony/tmuxp/
-Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+URL:            https://github.com/tony/tmuxp
+Source0:        https://github.com/tony/tmuxp/archive/v%{version}.tar.gz
 BuildArch:      noarch
  
 BuildRequires:  python2-devel
@@ -19,6 +19,7 @@ Requires:       tmux>=1.8
 Requires:       python>=2.6
 Requires:       python-kaptan>=0.5.7
 Requires:       python-argcomplete
+Requires:       python-colorama
 
 
 %description
@@ -55,5 +56,5 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %changelog
-* Sun Jun 28 2015  - 0.8.1-1
+* Thu Jul 9 2015  - 0.9.1-1
 - Initial package.
