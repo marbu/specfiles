@@ -79,11 +79,13 @@ popd
 
 %files
 %doc README.md LICENSE
+%{_bindir}/kaptan
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 %if 0%{?with_python3}
 %files -n python3-%{pypi_name}
 %doc README.md LICENSE
+%{_bindir}/python3-kaptan
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 %endif # with_python3
