@@ -24,33 +24,7 @@ Requires:       python-PyYAML
 Requires:       python-setuptools
 
 %description
-## kaptan ##
-
-[![Build Status](https://travis-ci.org/emre/kaptan.png)](https
-://travis-ci.org/emre/kaptan)&nbsp; <img src=
-"https://pypip.in/v/kaptan/badge.png"> &nbsp; <img
-src="https://pypip.in/d/kaptan/badge.png">
-
-configuration parser.
-
-###
-installation
-
-```sh
-$ pip install kaptan
-```
-
-or add kaptan directory to the
-your path.
-
-### usage ###
-
-**supported handlers**
-
-- dict
-- json
-- yaml
-- ...
+configuration parser
 
 %if 0%{?with_python3}
 %package -n     python3-%{pypi_name}
@@ -60,33 +34,7 @@ Requires:       python3-PyYAML
 Requires:       python3-setuptools
 
 %description -n python3-%{pypi_name}
-## kaptan ##
-
-[![Build Status](https://travis-ci.org/emre/kaptan.png)](https
-://travis-ci.org/emre/kaptan)&nbsp; <img src=
-"https://pypip.in/v/kaptan/badge.png"> &nbsp; <img
-src="https://pypip.in/d/kaptan/badge.png">
-
-configuration parser.
-
-###
-installation
-
-```sh
-$ pip install kaptan
-```
-
-or add kaptan directory to the
-your path.
-
-### usage ###
-
-**supported handlers**
-
-- dict
-- json
-- yaml
-- ...
+configuration parser
 %endif # with_python3
 
 
