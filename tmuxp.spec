@@ -8,7 +8,7 @@ Release:        1%{?dist}
 Summary:        Save and load tmux sessions thru JSON, YAML configs. Control tmux through Python objects
 
 License:        BSD
-URL:            http://github.com/tony/tmuxp/
+URL:            https://github.com/tony/tmuxp/
 Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
  
@@ -21,50 +21,31 @@ BuildRequires:  python3-setuptools
 %endif # if with_python3
  
 Requires:       python-setuptools
+Requires:       tmux>=1.8
+Requires:       python>=2.6
+Requires:       python-kaptan>=0.5.7
+Requires:       python-argcomplete
+Requires:       python-colorama
 
 %description
 tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
 `python objects`_, JSON or YAML.
-
-|pypi| |docs| |build-status| |coverage|
-|license|
-
-.. image:: https://raw.github.com/tony/tmuxp/master/doc/_static
-/tmuxp-demo.gif
-    :scale: 100%
-    :width: 45%
-    :align: center
-
-- Basic
-support for `freezing live sessions`_.
-- `Importing`_ from `teamocil`_ and
-`tmuxinator`_.
-- JSON or ...
 
 %if 0%{?with_python3}
 %package -n     python3-%{pypi_name}
 Summary:        Save and load tmux sessions thru JSON, YAML configs. Control tmux through Python objects
  
 Requires:       python3-setuptools
+Requires:       tmux>=1.8
+Requires:       python3>=3.3
+Requires:       python3-kaptan>=0.5.7
+Requires:       python3-argcomplete
+Requires:       python3-colorama
 
 %description -n python3-%{pypi_name}
 tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
 `python objects`_, JSON or YAML.
 
-|pypi| |docs| |build-status| |coverage|
-|license|
-
-.. image:: https://raw.github.com/tony/tmuxp/master/doc/_static
-/tmuxp-demo.gif
-    :scale: 100%
-    :width: 45%
-    :align: center
-
-- Basic
-support for `freezing live sessions`_.
-- `Importing`_ from `teamocil`_ and
-`tmuxinator`_.
-- JSON or ...
 %endif # with_python3
 
 
@@ -120,6 +101,7 @@ popd
 
 %files
 %doc README.rst LICENSE
+%{_bindir}/tmuxp
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 %if 0%{?with_python3}
