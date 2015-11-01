@@ -8,7 +8,6 @@ Summary:        A desktop bar similar to xmobar, but with more GUI
 License:        BSD
 Url:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch0:         taffybar-fix-network-uri-hack.patch
 
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
@@ -26,6 +25,7 @@ BuildRequires:  ghc-gtk-devel
 BuildRequires:  ghc-gtk-traymanager-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-devel
+BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-process-devel
@@ -51,7 +51,6 @@ optional snazzy system tray.
 
 %prep
 %setup -q
-%patch0 -p 1
 /usr/bin/cabal-tweak-flag network-uri False
 
 
