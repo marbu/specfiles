@@ -4,7 +4,7 @@
 
 Name:           %{pkg_name}
 Version:        0.4.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A desktop bar similar to xmobar, but with more GUI
 
 License:        BSD
@@ -110,6 +110,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 
 %changelog
+* Tue Nov 03 2015 Martin Bukatovič <martin.bukatovic@gmail.com> -  0.4.5-3
+- patching network-uri hack out (ghc-taffybar* packages were not installable)
+
 * Sun Nov 01 2015 Martin Bukatovič <martin.bukatovic@gmail.com> -  0.4.5-2
 - first actuall build of the package
 - spec file changed to follow BinLib package guidelines
