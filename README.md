@@ -4,6 +4,17 @@ Collection of rpm spec files I generated, modified or created from scratch.
 
 This repository is expected to be cloned into `~/rpmbuild/SPECS` directory.
 
+## Python
+
+To package python projects from [PyPI](https://pypi.python.org/pypi) I use
+`pyp2rpm` to generate initial specfile.
+
+Important Python related Fedora wikipages:
+
+ * [Python SIG](https://fedoraproject.org/wiki/SIGs/Python)
+ * [Python Packaging Guidelines](https://fedoraproject.org/wiki/Packaging:Python)
+ * [Python 3 as default](https://fedoraproject.org/wiki/Changes/Python_3_as_Default)
+
 ## Haskell
 
 I use `cabal-rpm` tool to create initial spec file (and/or srpm) to package
