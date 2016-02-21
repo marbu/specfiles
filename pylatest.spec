@@ -4,11 +4,11 @@
 Name:           python-%{pypi_name}
 Version:        0.0.5.dev1
 Release:        1%{?dist}
-Summary:        TODO:
+Summary:        Testcase description generation tools.
 
-License:        
-URL:            TODO:
-Source0:        
+License:        GPLv3
+URL:            https://github.com/mbukatov/%{pypi_name}
+Source0:        %{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
  
 BuildRequires:  python2-devel
@@ -18,26 +18,37 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
 %description
-TODO:
+Pylatest project provides a set of tools which allows you to:
+* Write a description of a test case using reStructuredText syntax.
+* Include this description into a python source code directly, split into
+  individual sections or actions to be performed, so that the description and
+  test automation code are stored next to each other.
 
 %package -n     python2-%{pypi_name}
-Summary:        TODO:
+Summary:        Testcase description generation tools.
 %{?python_provide:%python_provide python2-%{pypi_name}}
  
 Requires:       python-docutils
 Requires:       python-setuptools
 %description -n python2-%{pypi_name}
-TODO:
+Pylatest project provides a set of tools which allows you to:
+* Write a description of a test case using reStructuredText syntax.
+* Include this description into a python source code directly, split into
+  individual sections or actions to be performed, so that the description and
+  test automation code are stored next to each other.
 
 %package -n     python3-%{pypi_name}
-Summary:        TODO:
+Summary:        Testcase description generation tools.
 %{?python_provide:%python_provide python3-%{pypi_name}}
  
 Requires:       python3-docutils
 Requires:       python3-setuptools
 %description -n python3-%{pypi_name}
-TODO:
-
+Pylatest project provides a set of tools which allows you to:
+* Write a description of a test case using reStructuredText syntax.
+* Include this description into a python source code directly, split into
+  individual sections or actions to be performed, so that the description and
+  test automation code are stored next to each other.
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
