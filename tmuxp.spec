@@ -22,12 +22,9 @@ BuildRequires:  python3dist(pytest-rerunfailures) = 4.0
 BuildRequires:  python3dist(setuptools)
 
 %description
-tmuxp, tmux session manager. built on libtmux_.|pypi| |docs| |build-status|
-|coverage| |license|**New to tmux?** The Tao of tmux < is available on Leanpub
-and Amazon Kindle_. Read and browse the book for free on the web_.Installation
-.. code-block:: shell $ pip install --user tmuxpLoad a tmux session -Load tmux
-sessions via json and YAML, tmuxinator_ and teamocil_ style... code-block::
-yaml...
+tmuxp is tmux session manager built on libtmux. tmux users can reload common
+workspaces from YAML, JSON and dict configurations like tmuxinator and
+teamocil.
 
 %package -n     python3-%{srcname}
 Summary:        %{summary}
@@ -39,13 +36,9 @@ Requires:       python3dist(kaptan) >= 0.5.7
 Requires:       python3dist(libtmux) = 0.8.0
 Requires:       python3dist(setuptools)
 %description -n python3-%{srcname}
-tmuxp, tmux session manager. built on libtmux_.|pypi| |docs| |build-status|
-|coverage| |license|**New to tmux?** The Tao of tmux < is available on Leanpub
-and Amazon Kindle_. Read and browse the book for free on the web_.Installation
-.. code-block:: shell $ pip install --user tmuxpLoad a tmux session -Load tmux
-sessions via json and YAML, tmuxinator_ and teamocil_ style... code-block::
-yaml...
-
+tmuxp is tmux session manager built on libtmux. tmux users can reload common
+workspaces from YAML, JSON and dict configurations like tmuxinator and
+teamocil.
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
