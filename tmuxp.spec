@@ -1,117 +1,74 @@
-# Created by pyp2rpm-1.1.2
+# Created by pyp2rpm-3.3.2
 %global pypi_name tmuxp
-%global with_python3 1
+%global srcname tmuxp
 
-Name:           %{pypi_name}
-Version:        0.9.0
+Name:           %{srcname}
+Version:        1.4.0
 Release:        1%{?dist}
-Summary:        Save and load tmux sessions thru JSON, YAML configs. Control tmux through Python objects
+Summary:        tmux session manager
 
-License:        BSD
-URL:            https://github.com/tony/tmuxp/
-Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+License:        MIT
+URL:            http://github.com/tmux-python/tmuxp/
+Source0:        https://files.pythonhosted.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
  
-BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
- 
-%if %{?with_python3}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-%endif # if with_python3
- 
-Requires:       python-setuptools
-Requires:       tmux>=1.8
-Requires:       python>=2.6
-Requires:       python-kaptan>=0.5.7
-Requires:       python-argcomplete
-Requires:       python-colorama
+BuildRequires:  python3dist(click) = 6.7
+BuildRequires:  python3dist(colorama) = 0.3.9
+BuildRequires:  python3dist(kaptan) >= 0.5.7
+BuildRequires:  python3dist(libtmux) = 0.8.0
+BuildRequires:  python3dist(pytest) = 3.4.2
+BuildRequires:  python3dist(pytest-rerunfailures) = 4.0
+BuildRequires:  python3dist(setuptools)
 
 %description
-tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
-`python objects`_, JSON or YAML.
+tmuxp, tmux session manager. built on libtmux_.|pypi| |docs| |build-status|
+|coverage| |license|**New to tmux?** The Tao of tmux < is available on Leanpub
+and Amazon Kindle_. Read and browse the book for free on the web_.Installation
+.. code-block:: shell $ pip install --user tmuxpLoad a tmux session -Load tmux
+sessions via json and YAML, tmuxinator_ and teamocil_ style... code-block::
+yaml...
 
-%if 0%{?with_python3}
-%package -n     python3-%{pypi_name}
-Summary:        Save and load tmux sessions thru JSON, YAML configs. Control tmux through Python objects
+%package -n     python3-%{srcname}
+Summary:        %{summary}
+%{?python_provide:%python_provide python3-%{srcname}}
  
-Requires:       python3-setuptools
-Requires:       tmux>=1.8
-Requires:       python3>=3.3
-Requires:       python3-kaptan>=0.5.7
-Requires:       python3-argcomplete
-Requires:       python3-colorama
-
-%description -n python3-%{pypi_name}
-tmuxp, a novel approach to manage `tmux(1)`_ (>= 1.8) workspaces through
-`python objects`_, JSON or YAML.
-
-%endif # with_python3
+Requires:       python3dist(click) = 6.7
+Requires:       python3dist(colorama) = 0.3.9
+Requires:       python3dist(kaptan) >= 0.5.7
+Requires:       python3dist(libtmux) = 0.8.0
+Requires:       python3dist(setuptools)
+%description -n python3-%{srcname}
+tmuxp, tmux session manager. built on libtmux_.|pypi| |docs| |build-status|
+|coverage| |license|**New to tmux?** The Tao of tmux < is available on Leanpub
+and Amazon Kindle_. Read and browse the book for free on the web_.Installation
+.. code-block:: shell $ pip install --user tmuxpLoad a tmux session -Load tmux
+sessions via json and YAML, tmuxinator_ and teamocil_ style... code-block::
+yaml...
 
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
-
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-find %{py3dir} -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
-
-%endif # with_python3
-
-
 %build
-%{__python2} setup.py build
-
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py build
-popd
-%endif # with_python3
-
+%py3_build
 
 %install
-# Must do the subpackages' install first because the scripts in /usr/bin are
-# overwritten with every setup.py install (and we want the python2 version
-# to be the default for now).
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py install --skip-build --root %{buildroot}
-mv %{buildroot}%{_bindir}/tmuxp.bash %{buildroot}/%{_bindir}/python3-tmuxp.bash
-mv %{buildroot}%{_bindir}/tmuxp.zsh %{buildroot}/%{_bindir}/python3-tmuxp.zsh
-mv %{buildroot}%{_bindir}/tmuxp.tcsh %{buildroot}/%{_bindir}/python3-tmuxp.tcsh
-popd
-%endif # with_python3
-
-%{__python2} setup.py install --skip-build --root %{buildroot}
-
+%py3_install
 
 %check
-%{__python2} setup.py test
-
-%if 0%{?with_python3}
-pushd %{py3dir}
 %{__python3} setup.py test
-popd
-%endif # with_python3
 
-
-%files
-%doc README.rst LICENSE
+%files -n python3-%{srcname}
+%license LICENSE
+%doc README.rst
 %{_bindir}/tmuxp
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
-%if 0%{?with_python3}
-%files -n python3-%{pypi_name}
-%doc README.rst LICENSE
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
-%endif # with_python3
-
 
 %changelog
-* Tue Jul 28 2015 makerpm - 0.9.0-1
+* Thu Sep 20 2018 Martin Bukatovic <martin.bukatovic@gmail.com> - 1.4.0-1
 - Initial package.
+- Based on spec file created by pyp2rpm-3.3.2
